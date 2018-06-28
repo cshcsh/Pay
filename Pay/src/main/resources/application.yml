@@ -1,0 +1,83 @@
+server:
+  port: 80
+  servlet:
+    context-path: /
+    
+spring:
+   datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/db_pay
+      username: root
+      password: admin
+   jpa:
+     hibernate.ddl-auto: update
+     show-sql: true
+      
+     
+#支付宝支付配置
+# APPID 商户appid 
+# RSA_PRIVATE_KEY 私钥 pkcs8格式的
+# notify_url 服务器异步通知页面路径 需http://或者https://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
+# return_url 页面跳转同步通知页面路径 需http://或者https://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问 商户可以自定义同步跳转地址
+# URL 请求网关地址
+# CHARSET 编码
+# FORMAT 返回格式
+# ALIPAY_PUBLIC_KEY 支付宝公钥
+# SIGNTYPE RSA2
+
+alipayconfig:
+   appid: 2016091800543383
+   rsa_private_key: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDL2UiQ6cpl2H4C78Xiq2v5ZR3Z2lHg+G1FWn5dIQImQkVh4LlrczsYEuLMThRc6Zk3phgRd1rUv9JPgxTu4DNvSpkEJpOmJ9PRh2c7jownUYp1Urq1LvfVcwMiC0W7NI9lacBMruSk5f8RwbeWTMAWk6CcrblgLrNxihf/ozgcilOh2DcVDO8+TN0tc+Uo+rLk8hXL5noSR+MNbdbxxJhhsxa1gXVaD4sBNxoHnEsHPCQwhHj8Ts8umB8GPIjXw5wP8Q/uOCiHfeL5N6Cjhz5OuLoT/pM067XIOnfissLnnXgMSXh8jWQKSAi451p7CLBSOn+VG5dgnrVNH8juPISfAgMBAAECggEBAML2VYkDkShHHn4AhOp9uQ8Vvq8VNypLb3bdTe4UG9Irn+A05iH2W5ZyuaddJeyXHosyt+I8nQrNS3/whpzQoWDXn/FwU9aeUOAc+IbllvYj7qC3NwsCmNX04hI1ZcPeSSddNSYiP1vW/VUmSUfer/jnyL0RCjMLd2QoBzvgB1KC5NLjatbR8MiybtBWDBU0XF8j1LmmiLl73jTJwzcxQbuRe33k8T+OiKrNoFtymd6on0rSdFeUXEWsBOn2X9SDZ+uP2RkwloSoFWb6HKJ091fW4rvTkAT8uPIO0IDHOri4tbNwUgYt1DrAS3Cj8N93CkPIJ0woOfxTPxMGV8YadUECgYEA6dMF/QSk3Qveyi8uog62iWdsvkmyX5g+H/Bu0OfxJlYXseEQuO9f2an1qHiqvJPpB44BN9/T0pbOEoq7PWofiInH4pfC0DLCqBeb8RHn+k4swdyz6TY8eiYxL0FeQ5uiunjGqsx8SJ2SdbmJoQV+C0dBZQ7DgzCOBK1fEFZdrG0CgYEA3y59SLFfDgEDjyzotiqzDQRdfx6iAjuMAGglcrU3CCEonUKdb/lfxX7D7iO6eq15WUN1C2tzSudqEzBXdviGQnKwKqd7lkJf1SvYYRFFw7Rsfn6gMEhHiNBNsUDxcshrmkV+ZyFpxjVwcZF8f0DGCe2nmjJfw8qXY/pmmFNxNbsCgYAeTEW+X1etfNhFgo+cWCO28jvY/Fusn2GNae4yC5vnx8gSOIOeMwZMggVe6yPUg6XyYKgvwUUFSJ0zMd7JOnMTkibgaaHIsIsglM6UEino+TA7fomhcnGrsj81TFcWk5gmaXf0scJ49lIAByaaQsfuVjFXEu6qlSQR3xUuXMKOkQKBgQDHZejHXrl3cI52iAAuaX3pfmHuZjcG2Z7e6i2zC5bsa3u27UJuPZZEhFqXVFKSspS9nNhg6JJsdM8/76vlfmutyHv+z/5KJGkssuyy5NS44mUgqw+Bs8I9ySXw3P4buFby0W36xE6VqT8aKIrbwsptKmjZCnKnIkUaLSkmpT57awKBgCiikiUkO2MMKoiqhdc4g2C72mJJ83aFYEfsJmeYUs0Dbjx32ic1Pk97zxMeoPWqroPlnHmCmhsw1H/GtdCwS5ntdgNJh+TEkOLPaMVRu4rCaBLkeE4KDi9T88zT8R/b2fUnGrOHENVDlcBVCQzPjr8UdDyzMZ1QyoQnPDY8ayLd
+   notify_url: http://pay.java5200.com/alipay/notifyUrl
+   return_url: http://pay.java5200.com/alipay/returnUrl
+   url: https://openapi.alipaydev.com/gateway.do
+   charset: UTF-8
+   format: json
+   alipay_public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzpfsOaQf/Gssg32lrxpJrFpLNAirQNnRcbopjIsXkCTqznzsI0nWk23QZEHINnNpmwYB70jtgKJ51prDP+I2hJ4l7DwGLrwjQeFax96ad960/Mi1EoUtFB4LxEBI4kiW1wzowrjyU4RRS2cgNJjudFYrWT+mlMgBJuB9W8LYnnT0zYwHfclJ9WG08tl0YoHWo4NatkSD8YwtsIP5vqhqEH3ZZ8ZzS/Uuod1tsnOx+CZG9UKelK+F0PR/bBcDzcuPyoJBhlRf0BSkXFsyERXy0EMrpkVyj9V1G8v+EdC3k8zD1eO3k1nLhte5f14sA2Mzr/D8UEAW3J+QLJgEqMSL2QIDAQAB
+   signtype: RSA2
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+#微信支付配置
+# addid 公众账号ID
+# mch_id 商户号
+# device_info 设备号
+# key 商户的key【API密匙】
+# url api请求地址
+# notify_url 服务器异步通知页面路径
+weixinpayconfig:
+   appid: wx5e97e532d120a6bf
+   mch_id: 1500625891
+   device_info: WEB
+   key: jrBXpyMVPNY0FCFI42EBShLom7KMaRBe
+   url: https://api.mch.weixin.qq.com/pay/unifiedorder
+   notify_url: http://pay.java5200.com/weixinpay/notifyUrl
+   return_url: http://pay.java5200.com/weixinpay/returnUrl
